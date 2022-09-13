@@ -1,5 +1,5 @@
 from django.shortcuts import render
-from rest_framework.viewsets import ViewSet
+from rest_framework.viewsets import ViewSet,ModelViewSet
 from api.serializer import DataSerializer,UserSerializer
 from rest_framework.response import Response
 from rest_framework import authentication,permissions
@@ -54,3 +54,9 @@ class UserViews(ViewSet):
             return Response(data=serializer.data)
         else:
             return Response(data=serializer.errors)
+
+class DataModelView(ModelViewSet):
+    serializer_class = DataSerializer
+    queryset = Data.objects.all()
+    authentication_classes = [authentication.TokenAuthentication]
+    permission_classes = [permissions.IsAuthenticated]

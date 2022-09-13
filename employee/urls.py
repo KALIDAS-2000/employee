@@ -22,6 +22,7 @@ from rest_framework.authtoken.views import obtain_auth_token
 router=DefaultRouter()
 router.register("data",views.DataModelViews,basename="data")
 router.register("details/signup",views.UserViews,basename='users')
+router.register('api/v2/data',views.DataModelViews,basename='mdata')
 
 
 
